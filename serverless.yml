@@ -1,0 +1,22 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: joolsf
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: test
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: test-app-1
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-west-1
+
+# plugins:
+  # - serverless-localstack
+
+functions:
+  hello:
+    handler: src/handlers/handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
